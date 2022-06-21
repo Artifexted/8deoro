@@ -1,0 +1,24 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: rgb(200, 200, 200);
+}
+
+header {
+  color: #FFF;
+  background-color: rgb(210, 210, 210);
+  border-bottom: rgb(230, 0, 0) 0.3em solid;
+  height: 4.5em;
+}
+header .logo {
+  height: 4.5em;
+}
+
+main {
+  height: 100vh;
+  margin-left: 2em;
+}/*# sourceMappingURL=style.css.map */
