@@ -10,9 +10,35 @@ let iProductSelected = NaN;
 let iTotal = 0;
 let iContinue;
 
-// Constantes en las cuales almacenamos los productos y precios del sitio
+// Arrays en las cuales almacenamos los productos y precios del sitio
+const a8DO = [ 
+    {
+        id: 1,
+        title: "azucaradas",
+        price: 110,
+        img: "./assets/img/azucaradas.jpg",
+        alt: "paquete de 8 de oro azucaradas"
+    },
+    {
+        id: 2,
+        title: "clasicas",
+        price: 80,
+        img: "./assets/img/clasicas.jpg",
+        alt: "paquete de 8 de oro clásicas"
+    },
+    {
+        id: 3,
+        title: "agridulces",
+        price: 90,
+        img: "./assets/img/agridulces.jpg",
+        alt: "paquete de 8 de oro agridulces"
+    }
+];
+
 const aOptions8DO = [ "azucaradas", "clasicas", "agridulces" ];
 const aPrice8DO = [ 110, 80, 90 ];
+
+let iAzucaradas = 0, iClasicas = 0, iAgridulces = 0;
 
 // Esta función se ejecutará al hacer click en el botón "Comprar" gracias al evento onClick
 // En esta función creamos el prompt con datos recibidos de un bucle FOR en el cual pasamos los datos de los arrays.
@@ -23,7 +49,7 @@ function buy8deoro() {
         sOptions += aOptions8DO[i].toUpperCase() + " ($" + aPrice8DO[i] + ")\n";
     }
 
-    const optSelected = prompt("Elige las 8 de oro que quisieras comprar:\n\n" + sOptions).toLowerCase();
+    let optSelected = prompt("Elige las 8 de oro que quisieras comprar:\n\n" + sOptions).toLowerCase();
 
     if(aOptions8DO.includes(optSelected)) {
         buyOptSelected(aOptions8DO.indexOf(optSelected));
@@ -41,10 +67,12 @@ function buyOptSelected(option) {
     switch(iContinue) {
         case 1:
             alert("Excelente! Hasta ahora vas gastando: $" + totalBuy());
+            cart(aOptions8DO[option].toLowerCase());
             buy8deoro();
             break;
         case 2:
-            alert("¡Muchas gracias por tu compra! El total es: $" + totalBuy());
+            alert("¡Muchas gracias por tu compra! \nEl total es: $" + totalBuy());
+            cart(aOptions8DO[option].toLowerCase());
             iTotal = 0;
             break;
         default:
@@ -62,3 +90,38 @@ function totalBuy(valor) {
 
     return iTotal;
 }
+
+// En esta función hacemos el carrito
+function cart(option) {
+    switch(option)
+    {
+        case "azucaradas":
+            iAzucaradas++;
+            break;
+        case "clasicas":
+            iClasicas++;
+            break;
+        case "agridulces":
+            iAgridulces++;
+            break;
+    }
+
+    return console.log("Hasta ahora tenés: " + iAzucaradas + " 8 de oro azucaradas\n" + iClasicas + " 8 de oro clasicas\n" + iAgridulces + " 8 de oro agridulces");
+}
+
+// Empezamos a interactuar con HTML
+let htmlCode = ``;
+
+a8DO.forEach(function(ochoDeOro) {
+    htmlCode += `<article>
+    <img src="${ochoDeOro.img}" alt="${
+    ochoDeOro.alt
+  }">
+    <h3>8 de Oro ${ochoDeOro.title}</h3>
+    <p>Precio: $${ochoDeOro.price}</p>
+  </article>`;
+});
+
+const sCards = document.querySelector("#cards");
+
+sCards.innerHTML = htmlCode;
