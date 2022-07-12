@@ -32,7 +32,7 @@ button {
 }
 
 button:hover {
-  transform: scale(1.15);
+  transform: scale(1.03);
   background-color: rgb(90, 90, 90);
   color: #FFF;
 }
@@ -44,4 +44,24 @@ button:hover {
 }
 #cards article img {
   height: 350px;
+}
+
+#cart {
+  margin-bottom: 3em;
+}
+#cart div {
+  margin-bottom: 2em;
+}
+#cart div p, #cart div img {
+  display: inline-block;
+  margin-inline: 0.5em;
+}
+#cart img {
+  height: 100px;
+}
+
+footer {
+  position: absolute;
+  bottom: 0;
+  right: 0;
 }/*# sourceMappingURL=style.css.map */
