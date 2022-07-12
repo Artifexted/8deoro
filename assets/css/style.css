@@ -19,7 +19,7 @@ header .logo {
 }
 
 main {
-  height: 100vh;
+  min-height: 100vh;
   margin-left: 1em;
 }
 
@@ -61,7 +61,5 @@ button:hover {
 }
 
 footer {
-  position: absolute;
-  bottom: 0;
-  right: 0;
+  margin-left: 1em;
 }/*# sourceMappingURL=style.css.map */

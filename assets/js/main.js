@@ -136,3 +136,7 @@ const buyCart = () => {
 const actStorage = (cart) => {
     localStorage.setItem("cart", JSON.stringify(cart));
 };
+
+const delStorage = (cart) => {
+    localStorage.removeItem("cart");
+}
