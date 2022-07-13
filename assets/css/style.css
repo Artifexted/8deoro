@@ -10,8 +10,8 @@ body {
 
 header {
   color: #FFF;
-  background-color: rgb(210, 210, 210);
-  border-bottom: rgb(230, 0, 0) 0.3em solid;
+  background-color: rgb(219, 19, 22);
+  border-bottom: rgb(219, 19, 22) 0.3em solid;
   height: 4.5em;
 }
 header .logo {

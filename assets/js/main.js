@@ -55,6 +55,10 @@ const drawCart = () => {
     modalCart.className = "cart";
     modalCart.innerHTML = "";
 
+    iTotal = 0;
+
+    loadStorage();
+
     if(aCart.length > 0) {
         aCart.forEach((product, idProduct) => {
             const cartContainer = document.createElement("div");
@@ -68,41 +72,32 @@ const drawCart = () => {
             <button onClick="removeProduct(${idProduct})">Restar</button>
             `;
 
+            iTotal += product.price * product.cant;
             modalCart.appendChild(cartContainer);
         });
 
-        const totalContainer = document.createElement("div");
-        totalContainer.className = "total-cart";
-        totalContainer.innerHTML = `<div class="total"> TOTAL: $ ${iTotal}</div>
+        const divTotalContainer = document.createElement("div");
+        divTotalContainer.className = "total-cart";
+        divTotalContainer.innerHTML = `<div class="total"> TOTAL: $${iTotal}</div>
         <button onClick="buyCart()">FINALIZAR COMPRA</button>`;
-        modalCart.appendChild(totalContainer);
-    } else {
-        modalCart.classList.remove("cart");
-    }
+        modalCart.appendChild(divTotalContainer);
+    } else { modalCart.classList.remove("cart"); }
 };
-
-// Array donde almacenamos todo el carrito de compras
-let aCart = [];
 
 // Función en la que agregamos productos al carrito
 const addToCart = (idProduct) => {
-    const idCart = aCart.findIndex((element) => {
+    let idCart = aCart.findIndex((element) => {
         return element.id === aProducts[idProduct].id;
     });
 
     if(idCart === -1) {
-        const addProduct = aProducts[idProduct];
+        let addProduct = aProducts[idProduct];
         addProduct.cant = 1;
         aCart.push(addProduct);
-        iTotal += aCart[idProduct].price;
-        actStorage(aCart);
-        drawCart();
-    } else {
-        aCart[idCart].cant += 1;
-        iTotal += aCart[idProduct].price;
-        actStorage(aCart);
-        drawCart();
-    }
+    } else { aCart[idCart].cant += 1; }
+
+    saveStorage(aCart);
+    drawCart();
 };
 
 // Función en la que restamos productos del carrito
@@ -115,7 +110,7 @@ const removeProduct = (idProduct) => {
         aCart[idProduct].cant -= 1;
     }
 
-    actStorage(aCart);
+    saveStorage(aCart);
     drawCart();
 };
 
@@ -124,19 +119,32 @@ const buyCart = () => {
     alert("¡Gracias por tu compra! El total es: $" + iTotal);
     iTotal = 0;
 
-    aCart.forEach((product) => {
-        aCart.splice(product);
-    });
+    aCart.forEach((product) => { aCart.splice(product); });
 
-    actStorage(aCart);
+    delStorage();
     drawCart();
 };
 
-// Actualizamos el almacenamiento
-const actStorage = (cart) => {
+// Guardamos el carrito
+const saveStorage = (cart) => {
     localStorage.setItem("cart", JSON.stringify(cart));
 };
 
-const delStorage = (cart) => {
+// Cargamos el carrito
+const loadStorage = () => {
+    return JSON.parse(localStorage.getItem("cart")) || [];
+}
+
+// Eliminamos el carrito
+const delStorage = () => {
     localStorage.removeItem("cart");
 }
+
+// Llamamos a la función para cargar el carrito
+loadStorage();
+
+// Array donde almacenamos todo el carrito de compras
+let aCart = loadStorage();
+
+// Renderizamos/dibujamos el carrito
+drawCart();
