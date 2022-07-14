@@ -1,7 +1,7 @@
 # 8 DE ORO #
 
 ## Descripción ##
-e-commerce simple con JavaScript para el curso de Coderhouse.
+e-commerce simple con JavaScript.
 
 ## Deploy ##
 Podés ver la página funcionando desde [aquí](https://aguslu0.github.io/8deoro/)
