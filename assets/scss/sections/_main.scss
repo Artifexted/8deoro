@@ -1,5 +1,5 @@
 main {
-    min-height: 100vh;
+    min-height: 90vh;
     margin-left: 1em;
 }
 
@@ -34,14 +34,14 @@ button:hover {
 
     div {
         margin-bottom: 2em;
-    }
+        
+        img {
+            height: 100px;
+        }
 
-    div p, div img {
-        display: inline-block;
-        margin-inline: 0.5em;
-    }
-
-    img {
-        height: 100px;
+        p, img {
+            display: inline-block;
+            margin-inline: 0.5em;
+        }
     }
 }

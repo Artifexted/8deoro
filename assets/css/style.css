@@ -12,14 +12,14 @@ header {
   color: #FFF;
   background-color: rgb(219, 19, 22);
   border-bottom: rgb(219, 19, 22) 0.3em solid;
-  height: 4.5em;
+  height: 7vh;
 }
 header .logo {
-  height: 4.5em;
+  height: 7vh;
 }
 
 main {
-  min-height: 100vh;
+  min-height: 90vh;
   margin-left: 1em;
 }
 
@@ -52,14 +52,15 @@ button:hover {
 #cart div {
   margin-bottom: 2em;
 }
+#cart div img {
+  height: 100px;
+}
 #cart div p, #cart div img {
   display: inline-block;
   margin-inline: 0.5em;
 }
-#cart img {
-  height: 100px;
-}
 
 footer {
   margin-left: 1em;
+  height: 3vh;
 }/*# sourceMappingURL=style.css.map */
