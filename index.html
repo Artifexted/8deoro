@@ -5,25 +5,35 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>8 de oro</title>
+    <title>INICIO | 8 de oro</title>
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastify-js/1.12.0/toastify.css" integrity="sha512-kT0v1BxcibEO2Yc+6Z3W1gNsN+2cZ/U6uITqHhIJl8SAvt9vpO8llugdCPXA7cCnp8G1xbuSqHNMRaR3Zlz9yA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="./assets/css/style.css">
 </head>
 <body>
     <header>
         <img class="logo" src="./assets/img/8deoro.jpg">
+
+        <nav>
+            <ul>
+                <li> <a href="#" onClick="toggleNav(0)">TIENDA</a></li>
+                <li> <a href="#" onClick="toggleNav(1)">CARRITO</a></li>
+            </ul>
+        </nav>
     </header>
     <main>
-        <h1>8 DE ORO: Tienda digital</h1>
+        <h1>e-commerce</h1>
+        <p>¡Ahora el carrito podés verlo interactuando con la barra de navegación!</p>
 
-        <div id="cards"></div>
-        
+        <div id="shop"></div>
+
         <div id="cart"></div>
     </main>
     <footer>
         <p>by <a href="https://instagram.com/artifexted">Artifexted</a></p>
     </footer>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastify-js/1.12.0/toastify.js" integrity="sha512-ZHzbWDQKpcZxIT9l5KhcnwQTidZFzwK/c7gpUUsFvGjEsxPusdUCyFxjjpc7e/Wj7vLhfMujNx7COwOmzbn+2w==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="./assets/js/main.js"></script>
 </body>
 </html>

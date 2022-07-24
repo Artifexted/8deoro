@@ -9,13 +9,30 @@ body {
 }
 
 header {
-  color: #FFF;
+  width: 100vw;
   background-color: rgb(219, 19, 22);
   border-bottom: rgb(219, 19, 22) 0.3em solid;
-  height: 7vh;
+  height: 60px;
+  display: flex;
+  justify-content: space-between;
 }
 header .logo {
-  height: 7vh;
+  height: 60px;
+}
+@media screen and (min-width: 720px) {
+  header nav ul {
+    display: inline-flex;
+    margin-top: 1em;
+  }
+}
+header nav ul li {
+  margin-inline: 2em;
+  list-style: none;
+}
+header nav ul li a {
+  text-decoration: none;
+  color: rgb(255, 255, 255);
+  font-size: 1.5em;
 }
 
 main {
@@ -24,9 +41,9 @@ main {
 }
 
 button {
-  background-color: #FFF;
+  background-color: rgb(255, 255, 255);
   border: 0;
-  border-radius: 1em;
+  border-radius: 2em;
   padding: 1em;
   transition: 1.5s;
 }
@@ -34,16 +51,29 @@ button {
 button:hover {
   transform: scale(1.03);
   background-color: rgb(90, 90, 90);
-  color: #FFF;
+  color: rgb(255, 255, 255);
 }
 
-#cards article {
+#shop article {
   display: inline-block;
-  margin-inline: 5em;
+  margin-top: 2em;
   text-align: center;
 }
-#cards article img {
-  height: 350px;
+@media screen and (min-width: 720px) {
+  #shop article {
+    margin-inline: 2em;
+  }
+}
+@media screen and (max-width: 719px) {
+  #shop article {
+    display: block;
+  }
+}
+#shop article img {
+  height: 250px;
+}
+#shop article .amountInCart {
+  display: inline-block;
 }
 
 #cart {
@@ -55,12 +85,13 @@ button:hover {
 #cart div img {
   height: 100px;
 }
-#cart div p, #cart div img {
-  display: inline-block;
-  margin-inline: 0.5em;
+@media screen and (min-width: 720px) {
+  #cart div p, #cart div img {
+    display: inline-block;
+    margin-inline: 0.5em;
+  }
 }
 
 footer {
   margin-left: 1em;
-  height: 3vh;
 }/*# sourceMappingURL=style.css.map */

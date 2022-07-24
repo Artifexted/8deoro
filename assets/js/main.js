@@ -13,29 +13,68 @@ const aProducts = [
     { id: 3, title: "agridulces",   price: 90,  img: "./assets/img/agridulces.jpg", alt: "paquete de 8 de oro agridulces" }
 ];
 
-// Interactuamos con HTML para mostrar la lista de productos
-let htmlCode = ``;
-
-aProducts.forEach((product, idProduct) => {
-    htmlCode += `<article>
-    <img src="${product.img}" alt="${product.alt}">
-    <h3>8 de Oro ${product.title}</h3>
-    <p>Precio: $${product.price}</p>
-    <button onClick="addToCart(${idProduct})">COMPRAR</button>
-  </article>`;
-});
-
-const sCards = document.querySelector("#cards");
-
-sCards.innerHTML = htmlCode;
-
-// Renderizamos el carrito
-let htmlCartID = document.getElementById("cart");
+// Variable donde almacenamos el total gastado hasta el momento
 let iTotal = 0;
 
+const sCartID = document.getElementById("cart");
+const sShopID = document.getElementById("shop");
+
+// Colores variables para Toastify!
+var bgColors = [
+    "linear-gradient(to right, #011e6b, #20356b)",
+    "linear-gradient(to right, #c82822, #bb120b)",
+], i = 0;
+
+const toggleNav = (func) => {
+    if(func == 0) {
+        sShopID.style.display = "block";
+        sCartID.style.display = "none";
+    } else if(func == 1) {
+        if(aCart.length > 0) {
+            sShopID.style.display = "none";
+            sCartID.style.display = "block";
+        } else {
+            Toastify({
+                text: "Tu carrito está vacio...",
+                duration: 2000,
+                position: 'center',
+                gravity: 'bottom',
+                style: {
+                background: "linear-gradient(to right, #00b09b, #96c93d)",
+                }
+            }).showToast();
+
+            toggleNav(0);
+        }
+    }
+}
+
+// Mostrar la lista de productos
+const Shop = () => {
+    let sCode = ``;
+
+    aProducts.forEach((product, idProduct) => {
+        let idCart = aCart.findIndex((element) => { return element.id === aProducts[idProduct].id; });
+        let iAmount = amountInCart(idCart);
+
+        sCode += `<article>
+        <img src="${product.img}" alt="${product.alt}">
+        <h3>8 de Oro ${product.title}</h3>
+        <p>Precio: $${product.price}</p>
+        <button onClick="removeProduct(${idProduct})">-</button>
+        <p class="amountInCart">${iAmount}</p>
+        <button onClick="addToCart(${idProduct})">+</button>
+    </article>`;
+    });
+
+    sShopID.innerHTML = sCode;
+    toggleNav(0);
+}
+
+// Renderizamos el carrito
 const drawCart = () => {
-    htmlCartID.className = "cart";
-    htmlCartID.innerHTML = "";
+    sCartID.className = "cart";
+    sCartID.innerHTML = "";
 
     iTotal = 0;
 
@@ -46,16 +85,17 @@ const drawCart = () => {
             <p>8 de oro ${product.title}</p>
             <p>Cantidad: ${product.cant}</p>
             <p>Precio: $${product.price}</p>
-            <p>Subtotal: $${product.price * product.cant}</p>
-            <button onClick="removeProduct(${idProduct})">Restar</button>`;
+            <p>Subtotal: $${product.price * product.cant}</p>`;
 
             iTotal += product.price * product.cant;
-            htmlCartID.appendChild(cartContainer);
+            sCartID.appendChild(cartContainer);
         });
 
-        htmlCartID.innerHTML += `<div> TOTAL: $${iTotal}</div>
+        sCartID.innerHTML += `<div> TOTAL: $${iTotal}</div>
         <button onClick="buyCart()">FINALIZAR COMPRA</button>`;
-    } else { htmlCartID.classList.remove("cart"); }
+    } else {  sCartID.classList.remove("cart"); }
+
+    Shop();
 }
 
 // Función en la que agregamos productos al carrito
@@ -69,32 +109,96 @@ const addToCart = (idProduct) => {
     } else { aCart[idCart].cant++; }
 
     saveStorage(aCart);
+
+    Toastify({
+        text: "Producto agregado!",
+        duration: 1500,
+        close: true,
+        position: 'center',
+        gravity: 'bottom',
+        style: {
+          background: bgColors[i % 2],
+          color: "#fade1b",
+        }
+      }).showToast();
+      i++;
 }
 
 // Función en la que restamos productos del carrito
 const removeProduct = (idProduct) => {
-    iTotal -= aCart[idProduct].price;
+    let idCart = aCart.findIndex((element) => { return element.id === aProducts[idProduct].id; });
 
-    (aCart[idProduct].cant <= 1) ? aCart.splice(idProduct, 1) : aCart[idProduct].cant--;
+    if(!aCart[idCart]) { 
+        Toastify({
+            text: "No tenés este producto en tu carrito...",
+            duration: 1500,
+            close: true,
+            position: 'center',
+            gravity: 'bottom',
+            style: {
+              background: bgColors[i % 2],
+              color: "#fade1b",
+            }
+          }).showToast();
+          i++;
+
+        return; 
+    }
+    
+    iTotal -= aCart[idCart].price;
+
+    (aCart[idCart].cant <= 1) ? aCart.splice(idCart, 1) : aCart[idCart].cant--;
 
     saveStorage(aCart);
+
+    Toastify({
+        text: "Producto eliminado!",
+        duration: 1500,
+        close: true,
+        position: 'center',
+        gravity: 'bottom',
+        style: {
+          background: bgColors[i % 2],
+          color: "#fade1b",
+        }
+      }).showToast();
+      i++;
 }
 
 // Función en la que finalizamos la compra y eliminamos el carrito
 const buyCart = () => {
-    alert("¡Gracias por tu compra! El total es: $" + iTotal);
+    Toastify({
+        text: "¡Gracias por tu compra! El total es: $" + iTotal,
+        duration: 3000,
+        position: 'center',
+        gravity: 'bottom',
+        style: {
+          background: "linear-gradient(to right, #00b09b, #96c93d)",
+        }
+      }).showToast();
+
     iTotal = 0;
 
     aCart.forEach((product) => { aCart.splice(product); });
 
     delStorage();
+    Shop();
 }
 
-// Guardamos el carrito
+// Función para guardar el carrito
 const saveStorage = (cart) => { localStorage.setItem("cart", JSON.stringify(cart)); drawCart(); }
 
-// Cargamos el carrito
+// Función para cargar el carrito
 const loadStorage = () => { return JSON.parse(localStorage.getItem("cart")) || []; }
+
+// Función para mostrar la cantidad en carrito de un producto.
+const amountInCart = (idProduct) => { 
+    let result = (aCart[idProduct]) ? (JSON.stringify(aCart[idProduct].cant)) : 0;
+    return result; 
+}
+
+// Función para eliminar el carrito
+const delStorage = () => { localStorage.removeItem("cart"); drawCart(); }
 
 // Array donde almacenamos todo el carrito de compras
 let aCart = loadStorage();
@@ -102,8 +206,8 @@ let aCart = loadStorage();
 // Llamamos a la función para cargar el carrito
 loadStorage();
 
-// Eliminamos el carrito
-const delStorage = () => { localStorage.removeItem("cart"); drawCart(); }
+// Shop
+Shop();
 
 // Llamamos a la función del renderizado del carrito
 drawCart();

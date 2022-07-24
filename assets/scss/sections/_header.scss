@@ -1,10 +1,30 @@
 header {
-    color: #FFF;
-    background-color: rgb(219, 19, 22);
-    border-bottom: rgb(219, 19, 22) 0.3em solid;
-    height: 7vh;
+    width: 100vw;
+    background-color: $red;
+    border-bottom: $red 0.3em solid;
+    height: 60px;
+    display: flex;
+    justify-content: space-between;
 
     .logo {
-        height: 7vh;
+        height: 60px;
+    }
+
+    nav ul {
+        @include BkpM {
+            display: inline-flex;
+            margin-top: 1em;
+        }
+        
+        li {
+            margin-inline: 2em;
+            list-style: none;
+
+            a {
+                text-decoration: none;
+                color: $white;
+                font-size: 1.5em;
+            }
+        }
     }
 }
