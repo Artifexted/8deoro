@@ -1,6 +1,5 @@
 main {
     min-height: 90vh;
-    margin-left: 1em;
 }
 
 button {
@@ -15,47 +14,4 @@ button:hover {
     transform: scale(1.03);
     background-color: $darkGray;
     color: $white;
-}
-
-#shop article {
-    display: inline-block;
-
-    margin-top: 2em;
-
-    @include BkpM {
-        margin-inline: 2em;
-    }
-    @include BkpS {
-        display: block;
-    }
-    
-    text-align: center;
-
-    img {
-        height: 250px;
-    }
-
-    .amountInCart {
-        display: inline-block;
-    }
-}
-
-
-#cart {
-    margin-bottom: 3em;
-
-    div {
-        margin-bottom: 2em;
-        
-        img {
-            height: 100px;
-        }
-
-        p, img {
-            @include BkpM {
-                display: inline-block;
-                margin-inline: 0.5em;
-            }
-        }
-    }
 }

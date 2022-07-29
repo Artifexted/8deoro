@@ -92,9 +92,9 @@ const drawCart = () => {
 
     if(aCart.length > 0) {
         aCart.forEach((product, idProduct) => {
-            const cartContainer = document.createElement("div");
+            const cartContainer = document.createElement("article");
             cartContainer.innerHTML = `<img src="${product.img}"/>
-            <p>8 de oro ${product.title}</p>
+            <h3>8 de oro ${product.title}</h3>
             <p>Cantidad: ${product.cant}</p>
             <p>Precio: $${product.price}</p>
             <p>Subtotal: $${product.price * product.cant}</p>`;

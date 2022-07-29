@@ -37,7 +37,6 @@ header nav ul li a {
 
 main {
   min-height: 90vh;
-  margin-left: 1em;
 }
 
 button {
@@ -50,13 +49,19 @@ button {
 
 button:hover {
   transform: scale(1.03);
-  background-color: rgb(90, 90, 90);
+  background-color: rgb(70, 70, 70);
   color: rgb(255, 255, 255);
+}
+
+footer {
+  margin-left: 1em;
 }
 
 #shop article {
   display: inline-block;
-  margin-top: 2em;
+  padding: 1em;
+  border-radius: 1.5em;
+  background-color: rgb(175, 175, 175);
   text-align: center;
 }
 @media screen and (min-width: 720px) {
@@ -67,10 +72,13 @@ button:hover {
 @media screen and (max-width: 719px) {
   #shop article {
     display: block;
+    width: 90%;
+    margin-inline: 5%;
   }
 }
 #shop article img {
   height: 250px;
+  border-radius: 1.5em;
 }
 #shop article .amountInCart {
   display: inline-block;
@@ -79,19 +87,44 @@ button:hover {
 #cart {
   margin-bottom: 3em;
 }
-#cart div {
+#cart article {
+  display: inline-block;
+  padding: 1em;
+  border-radius: 1.5em;
+  background-color: rgb(175, 175, 175);
   margin-bottom: 2em;
 }
-#cart div img {
+#cart article img {
   height: 100px;
 }
 @media screen and (min-width: 720px) {
-  #cart div p, #cart div img {
+  #cart article p, #cart article img {
     display: inline-block;
     margin-inline: 0.5em;
   }
 }
+@media screen and (max-width: 719px) {
+  #cart article, #cart div, #cart button {
+    display: block;
+    width: 90%;
+    margin-inline: 5%;
+  }
+}
+@media screen and (min-width: 720px) {
+  #cart article, #cart div, #cart button {
+    margin-inline: 1em;
+  }
+}
 
-footer {
-  margin-left: 1em;
+h3 {
+  margin-bottom: 0.2em;
+}
+
+button {
+  margin-top: 1em;
+}
+
+h1 {
+  margin-left: 0.5em;
+  margin-bottom: 0.3em;
 }/*# sourceMappingURL=style.css.map */
