@@ -1,0 +1,23 @@
+[ 
+    { 
+        "id": 1, 
+        "title": "azucaradas",   
+        "price": 110, 
+        "img": "./assets/img/azucaradas.jpg", 
+        "alt": "paquete de 8 de oro azucaradas" 
+    },
+    { 
+        "id": 2, 
+        "title": "clasicas",     
+        "price": 80,  
+        "img": "./assets/img/clasicas.jpg",   
+        "alt": "paquete de 8 de oro clásicas" 
+    },
+    { 
+        "id": 3, 
+        "title": "agridulces",   
+        "price": 90,  
+        "img": "./assets/img/agridulces.jpg", 
+        "alt": "paquete de 8 de oro agridulces" 
+    }
+]

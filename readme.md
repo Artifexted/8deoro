@@ -11,5 +11,8 @@ Podés ver la página funcionando desde [aquí](https://aguslu0.github.io/8deoro
 * SASS/CSS
 * JavaScript
 
+## Librerías ##
+* [Toastify JS](https://github.com/apvarun/toastify-js/)
+
 ## Mi LinkedIn ##
 [Artifexted](https://www.linkedin.com/in/artifexted/)

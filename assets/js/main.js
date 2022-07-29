@@ -7,11 +7,23 @@
 */
 
 // Array en la cual almacenamos los productos
-const aProducts = [ 
-    { id: 1, title: "azucaradas",   price: 110, img: "./assets/img/azucaradas.jpg", alt: "paquete de 8 de oro azucaradas" },
-    { id: 2, title: "clasicas",     price: 80,  img: "./assets/img/clasicas.jpg",   alt: "paquete de 8 de oro clásicas" },
-    { id: 3, title: "agridulces",   price: 90,  img: "./assets/img/agridulces.jpg", alt: "paquete de 8 de oro agridulces" }
-];
+let aProducts = [];
+
+// Accedemos al JSON de los productos y lo pasamos como parametro de una función
+fetch("./assets/js/products.json")
+    .then((resp) => resp.json())
+    .then((product) => {
+        loadProducts(product);
+    }
+);
+
+function loadProducts(products) {
+    // Almacenamos lo obtenido del fetch en un array
+    aProducts = products;
+
+    // Cargamos la tienda
+    Shop();
+}
 
 // Variable donde almacenamos el total gastado hasta el momento
 let iTotal = 0;
@@ -205,9 +217,6 @@ let aCart = loadStorage();
 
 // Llamamos a la función para cargar el carrito
 loadStorage();
-
-// Shop
-Shop();
 
 // Llamamos a la función del renderizado del carrito
 drawCart();
