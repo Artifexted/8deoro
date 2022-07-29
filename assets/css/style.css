@@ -115,13 +115,12 @@ footer {
     margin-inline: 1em;
   }
 }
+#cart button {
+  margin-top: 1em;
+}
 
 h3 {
   margin-bottom: 0.2em;
-}
-
-button {
-  margin-top: 1em;
 }
 
 h1 {
