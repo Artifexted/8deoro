@@ -1,7 +1,7 @@
 # 8 DE ORO #
 
 ## Descripción ##
-e-commerce simple con JavaScript.
+e-commerce simple con JavaScript. (sin diseño)
 
 ## Deploy ##
 Podés ver la página funcionando desde [aquí](https://aguslu0.github.io/8deoro/)
