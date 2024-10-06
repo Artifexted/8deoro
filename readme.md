@@ -4,7 +4,7 @@
 e-commerce simple con JavaScript. (sin diseño)
 
 ## Deploy ##
-Podés ver la página funcionando desde [aquí](https://aguslu0.github.io/8deoro/)
+Podés ver la página funcionando desde [aquí](https://artifexted.github.io/8deoro/)
 
 ## Construido con ##
 * HTML
