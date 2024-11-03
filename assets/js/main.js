@@ -69,14 +69,15 @@ const Shop = () => {
         let idCart = aCart.findIndex((element) => { return element.id === aProducts[idProduct].id; });
         let iAmount = amountInCart(idCart);
 
-        sCode += `<article>
-        <img src="${product.img}" alt="${product.alt}">
-        <h3>8 de Oro ${product.title}</h3>
-        <p>Precio: $${product.price}</p>
-        <button onClick="removeProduct(${idProduct})">-</button>
-        <p class="amountInCart">${iAmount}</p>
-        <button onClick="addToCart(${idProduct})">+</button>
-    </article>`;
+        sCode += `<div class="product">
+    <img src="${product.img}" alt="${product.alt}" class="product-img">
+    <h3 class="product-title">8 de Oro ${product.title}</h3>
+    <p>Precio: <span class="product-price">$${product.price}</span></p>
+    <button class="btn-remove" onClick="removeProduct(${idProduct})">-</button>
+    <p class="amountInCart">${iAmount}</p>
+    <button class="btn-add" onClick="addToCart(${idProduct})">+</button>
+</div>`;
+
     });
 
     sShopID.innerHTML = sCode;
@@ -92,8 +93,9 @@ const drawCart = () => {
 
     if(aCart.length > 0) {
         aCart.forEach((product, idProduct) => {
-            const cartContainer = document.createElement("article");
-            cartContainer.innerHTML = `<img src="${product.img}"/>
+            const cartContainer = document.createElement("div");
+            cartContainer.classList.add("product");
+            cartContainer.innerHTML = `<img src="${product.img}" class="product-img"/>
             <h3>8 de oro ${product.title}</h3>
             <p>Cantidad: ${product.cant}</p>
             <p>Precio: $${product.price}</p>
@@ -104,7 +106,7 @@ const drawCart = () => {
         });
 
         sCartID.innerHTML += `<div> TOTAL: $${iTotal}</div>
-        <button onClick="buyCart()">FINALIZAR COMPRA</button>`;
+        <button onClick="buyCart()" class="buyCart">FINALIZAR COMPRA</button>`;
     } else {  sCartID.classList.remove("cart"); }
 
     Shop();

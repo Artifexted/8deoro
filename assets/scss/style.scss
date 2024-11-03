@@ -1,8 +1,8 @@
-@import "mixins/_breakpoints";
-@import "variables/_color";
-@import "base/_reset";
-@import "base/base";
-@import "sections/_header";
-@import "sections/_main";
-@import "sections/_footer";
-@import "components/_cards";
+@import 'variables/variables';
+@import 'base/base';
+@import 'base/reset';
+@import 'sections/header';
+@import 'sections/footer';
+@import 'sections/main';
+@import 'sections/shop';
+@import 'components/cart';

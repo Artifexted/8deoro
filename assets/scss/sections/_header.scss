@@ -1,29 +1,25 @@
 header {
-    width: 100vw;
-    background-color: $red;
-    border-bottom: $red 0.3em solid;
-    height: 60px;
+    background-color: $color-primary;
+    padding: 1rem;
     display: flex;
+    align-items: center;
     justify-content: space-between;
 
     .logo {
-        height: 60px;
+        height: 50px;
     }
 
     nav ul {
-        @include BkpM {
-            display: inline-flex;
-            margin-top: 1em;
-        }
-        
+        list-style: none;
+        display: flex;
+
         li {
-            margin-inline: 2em;
-            list-style: none;
+            margin: 0 1rem;
 
             a {
                 text-decoration: none;
-                color: $white;
-                font-size: 1.5em;
+                color: white;
+                font-weight: bold;
             }
         }
     }

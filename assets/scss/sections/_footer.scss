@@ -1,3 +1,11 @@
 footer {
-    margin-left: 1em;
+    background-color: $color-primary;
+    color: white;
+    text-align: center;
+    padding: 1rem;
+
+    .byAtfx {
+        color: white;
+        text-decoration: underline;
+    }
 }

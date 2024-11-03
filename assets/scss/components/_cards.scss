@@ -1,77 +1,33 @@
-#shop article {
-    display: inline-block;
-
+article {
+    border: 1px solid $color-primary;
+    border-radius: 5px;
     padding: 1em;
-    border-radius: 1.5em;
-    background-color: $card;
-
-    @include BkpM {
-        margin-inline: 2em;
-    }
-    @include BkpS {
-        display: block;
-        width: 90%;
-        margin-inline: 5%;
-    }
-    
-    text-align: center;
+    margin: 0.5em;
+    background-color: white;
 
     img {
-        height: 250px;
-        border-radius: 1.5em;
+        max-width: 100%;
+        height: auto;
     }
 
-    .amountInCart {
-        display: inline-block;
-    }
-}
-
-
-#cart {
-    margin-bottom: 3em;
-
-    article {
-        display: inline-block;
-        padding: 1em;
-        border-radius: 1.5em;
-        background-color: $card;
-
-        margin-bottom: 2em;
-        
-        img {
-            height: 100px;
-        }
-
-        p, img {
-            @include BkpM {
-                display: inline-block;
-                margin-inline: 0.5em;
-            }
-        }
-    }
-
-    article, div, button {
-        @include BkpS {
-            display: block;
-            width: 90%;
-            margin-inline: 5%;
-        }
-
-        @include BkpM {
-            margin-inline: 1em;
-        }
+    h3 {
+        color: $color-primary;
     }
 
     button {
-        margin-top: 1em;
+        background-color: $color-primary;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        padding: 10px;
+        cursor: pointer;
+
+        &:hover {
+            background-color: darken($color-primary, 10%);
+        }
     }
-}
 
-h3 {
-    margin-bottom: 0.2em;
-}
-
-h1 {
-    margin-left: 0.5em;
-    margin-bottom: 0.3em;
+    .amountInCart {
+        font-weight: bold;
+    }
 }
