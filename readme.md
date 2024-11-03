@@ -1,7 +1,7 @@
 # 8 DE ORO #
 
 ## Descripción ##
-e-commerce simple con JavaScript. (sin diseño)
+FrontEnd de e-commerce simple con JavaScript.
 
 ## Deploy ##
 Podés ver la página funcionando desde [aquí](https://artifexted.github.io/8deoro/)
